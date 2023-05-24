@@ -21,7 +21,7 @@ export const Option = styled.button`
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  width: 130px;
+  //   width: 130px;
   background: transparent;
   border: none;
   margin: 10px;
@@ -93,6 +93,7 @@ export const SavedVideosIcon = styled(RiMenuAddLine)`
   //   }
 `
 export const LinkItem = styled(Link)`
+  width: 100%;
   text-decoration: none;
   &:hover {
     background-color: ${props => (props.isDarkTheme ? '#383838' : '#cbd5e1')};

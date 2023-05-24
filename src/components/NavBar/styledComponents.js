@@ -4,7 +4,7 @@ import {IoMdMoon} from 'react-icons/io'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {FiLogOut, FiSun} from 'react-icons/fi'
 
-import Popup from 'reactjs-popup'
+// import Popup from 'reactjs-popup'
 
 export const NavBarContainer = styled.div`
   padding: 10px;
@@ -80,6 +80,8 @@ export const ProfileIcon = styled.img`
 `
 
 export const LogoutIconButton = styled.button`
+  background: transparent;
+  border: none;
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -113,23 +115,19 @@ export const CloseIcon = styled(AiOutlineClose)`
   width: 35px;
 `
 
-export const PopupContent = styled(Popup)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #ffffff;
-  margin: 0px;
-`
+// export const PopupContainer = styled(Popup)`
+//   background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
+// `
 
 export const ModalContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 90%;
   max-width: 458px;
+  background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
 `
 
 export const PopupCloseButton = styled.button`

@@ -1,4 +1,7 @@
-import {Component, Redirect} from 'react'
+import {
+  Component,
+  // Redirect
+} from 'react'
 
 import Cookies from 'js-cookie'
 
@@ -80,11 +83,12 @@ class Login extends Component {
 
   render() {
     // console.log('In Login render()')
-    const jwtToken = Cookies.get('jwt_token')
-    console.log(jwtToken)
-    if (jwtToken !== undefined) {
-      return <Redirect to="/" />
-    }
+
+    // const jwtToken = Cookies.get('jwt_token')
+    // console.log(jwtToken)
+    // if (jwtToken !== undefined) {
+    //   return <Redirect to="/" />
+    // }
 
     return (
       <ThemeContext.Consumer>

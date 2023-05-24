@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const VideoItemDetailsContainer = styled.div`
+  padding: 10px;
   @media screen and (min-width: 576px) {
     width: 350px;
   }
@@ -8,7 +9,8 @@ export const VideoItemDetailsContainer = styled.div`
 
 export const VideoThumbnailImage = styled.img`
   height: 250px;
-  width: 450px;
+  //   width: 450px;
+  width: 100%;
   @media screen and (min-width: 576px) {
     height: 190px;
     width: 100%;

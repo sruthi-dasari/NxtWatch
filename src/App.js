@@ -9,7 +9,7 @@ import Home from './components/Home'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './components/NotFound'
 import ThemeContext from './components/context/ThemeContext'
-// import Trending from './components/Trending'
+import Trending from './components/Trending'
 // import Gaming from './components/Gaming'
 // import SavedVideos from './components/SavedVideos'
 // import VideoItemDetails from './components/VideoItemDetails'
@@ -35,7 +35,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
-          {/* <Route exact path="/trending" component={Trending} /> */}
+          <Route exact path="/trending" component={Trending} />
           {/* <Route exact path="/gaming" component={Gaming} /> */}
           {/* <Route exact path="/saved-videos" component={SavedVideos} /> */}
           {/* <Route exact path="/videos/:id" component={VideoItemDetails} /> */}

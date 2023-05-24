@@ -2,7 +2,10 @@ import {withRouter} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
+import Popup from 'reactjs-popup'
+
 import MenuView from '../MenuView'
+import './index.css'
 
 import {
   NavBarContainer,
@@ -16,7 +19,7 @@ import {
   MenuIcon,
   LogoutIcon,
   CloseIcon,
-  PopupContent,
+  //   PopupContainer,
   ModalContainer,
   PopupCloseButton,
   LogoutButton,
@@ -60,7 +63,7 @@ const NavBar = props => (
               {isDarkTheme ? <SunIcon /> : <MoonIcon />}
             </ThemeIconButton>
 
-            <PopupContent
+            <Popup
               modal
               trigger={
                 <MenuIconButton type="button">
@@ -68,9 +71,11 @@ const NavBar = props => (
                 </MenuIconButton>
               }
               overlayStyle={overlayStyles}
+              className="popup-content"
+              isDarkTheme={isDarkTheme}
             >
               {close => (
-                <ModalContainer>
+                <>
                   <PopupCloseButton
                     type="button"
                     // className="trigger-button"
@@ -78,11 +83,12 @@ const NavBar = props => (
                   >
                     <CloseIcon />
                   </PopupCloseButton>
-
-                  <MenuView />
-                </ModalContainer>
+                  <ModalContainer isDarkTheme={isDarkTheme}>
+                    <MenuView />
+                  </ModalContainer>
+                </>
               )}
-            </PopupContent>
+            </Popup>
 
             <ProfileIcon src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
             <LogoutIconButton type="button" onClick={onClickLogout}>
