@@ -10,7 +10,7 @@ const LeftPanelView = () => (
     {value => {
       const {isDarkTheme} = value
       return (
-        <LeftPanelViewContainer isDarkTheme={isDarkTheme}>
+        <LeftPanelViewContainer $isDarkTheme={isDarkTheme}>
           <MenuView />
           <ContactView />
         </LeftPanelViewContainer>

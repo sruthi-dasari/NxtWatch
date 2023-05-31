@@ -4,14 +4,14 @@ import {IoMdMoon} from 'react-icons/io'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {FiLogOut, FiSun} from 'react-icons/fi'
 
-// import Popup from 'reactjs-popup'
+import Popup from 'reactjs-popup'
 
 export const NavBarContainer = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${props => (props.isDarkTheme ? '#212121' : '')};
+  background-color: ${props => (props.$isDarkTheme ? '#212121' : '')};
   @media screen and (min-width: 768px) {
     height: 100px;
     padding-left: 50px;
@@ -28,17 +28,24 @@ export const AppLogo = styled.img`
   }
 `
 
-export const OptionsContainer = styled.div`
+export const OptionsContainer = styled.ul`
   display: flex;
   justify-content: space-between;
   width: 120px;
+  list-style: none;
+  padding-left: 0px;
   @media screen and (min-width: 768px) {
     width: 250px;
   }
 `
-export const ThemeIconButton = styled.div`
+
+export const ThemeIconContainer = styled.li``
+
+export const ThemeIconButton = styled.button`
   display: flex;
   align-items: center;
+  background: transparent;
+  border: none;
 `
 
 export const MoonIcon = styled(IoMdMoon)`
@@ -56,18 +63,21 @@ export const SunIcon = styled(FiSun)`
   color: #ffffff;
 `
 
-export const MenuIconButton = styled.button`
-  background: transparent;
-  border: none;
+export const MenuIconContainer = styled.li`
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
 
+export const MenuIconButton = styled.button`
+  background: transparent;
+  border: none;
+`
+
 export const MenuIcon = styled(AiOutlineMenu)`
   height: 30px;
   width: 30px;
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '')};
 `
 export const ProfileIcon = styled.img`
   display: none;
@@ -76,6 +86,12 @@ export const ProfileIcon = styled.img`
     display: flex;
     height: 40px;
     width: 40px;
+  }
+`
+
+export const LogoutIconContainer = styled.li`
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 `
 
@@ -90,18 +106,23 @@ export const LogoutIconButton = styled.button`
 export const LogoutIcon = styled(FiLogOut)`
   height: 30px;
   width: 30px;
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '')};
 `
 
-export const LogoutButton = styled.button`
+export const LogoutContainer = styled.li`
   display: none;
   @media screen and (min-width: 768px) {
     display: flex;
+  }
+`
+
+export const LogoutButton = styled.button`
+  @media screen and (min-width: 768px) {
     justify-content: center;
     align-items: center;
-    color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
+    color: ${props => (props.$isDarkTheme ? '#ffffff' : '#3b82f6')};
     background: transparent;
-    border-color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
+    border-color: ${props => (props.$isDarkTheme ? '#ffffff' : '#3b82f6')};
     height: 40px;
     width: 100px;
     font-size: 20px;
@@ -113,11 +134,14 @@ export const LogoutButton = styled.button`
 export const CloseIcon = styled(AiOutlineClose)`
   height: 28px;
   width: 35px;
+  color: ${props => (props.$isDarkTheme ? '#f1f1f1' : '')};
 `
 
-// export const PopupContainer = styled(Popup)`
-//   background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
-// `
+export const PopupContainer = styled(Popup)`
+  background-color: ${props => (props.$isDarkTheme ? '#212121' : '#ffffff')};
+  height: 100%;
+  width: 100%;
+`
 
 export const ModalContainer = styled.div`
   flex-grow: 1;
@@ -125,9 +149,11 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  max-width: 458px;
-  background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
+  height: 100%;
+  width: 100%;
+  //   max-width: 458px;
+  background-color: ${props => (props.$isDarkTheme ? '#212121' : '#ffffff')};
+  padding: 20px;
 `
 
 export const PopupCloseButton = styled.button`

@@ -5,18 +5,18 @@ export const LoginContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => (props.isDarkTheme ? '#231f20' : '')};
+  background-color: ${props => (props.$isDarkTheme ? '#231f20' : '')};
 `
 export const LoginFormOuterContainer = styled.div`
   border-radius: 10px;
   box-shadow: ${props =>
-    props.isDarkTheme ? '' : '5px 5px 10px 10px #f1f1f1'};
+    props.$isDarkTheme ? '' : '5px 5px 10px 10px #f1f1f1'};
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${props => (props.isDarkTheme ? '#000000' : '')};
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
 `
 
 export const NxtWatchLogo = styled.img`
@@ -32,7 +32,7 @@ export const TextInputContainer = styled.div`
   margin-bottom: 20px;
 `
 export const Label = styled.div`
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#64748b')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#64748b')};
   font-family: 'Roboto';
   font-weight: 500;
 `
@@ -50,7 +50,7 @@ export const TextInput = styled.input`
   height: 100%;
   width: 100%;
   font-size: 18px;
-  color: ${props => (props.isDarkTheme ? '#ebebeb' : '#64748b')};
+  color: ${props => (props.$isDarkTheme ? '#ebebeb' : '#64748b')};
   background: transparent;
 `
 
@@ -69,7 +69,7 @@ export const CheckboxLabel = styled.div`
   font-family: 'Roboto';
   font-size: 20px;
   font-weight: 400;
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#64748b')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#64748b')};
 `
 
 export const LoginButton = styled.button`

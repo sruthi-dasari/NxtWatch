@@ -1,7 +1,6 @@
-import {
-  Component,
-  // Redirect
-} from 'react'
+import {Component} from 'react'
+
+import {Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
@@ -82,13 +81,13 @@ class Login extends Component {
   }
 
   render() {
-    // console.log('In Login render()')
+    console.log('In Login render()')
 
-    // const jwtToken = Cookies.get('jwt_token')
-    // console.log(jwtToken)
-    // if (jwtToken !== undefined) {
-    //   return <Redirect to="/" />
-    // }
+    const jwtToken = Cookies.get('jwt_token')
+    console.log(jwtToken)
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
 
     return (
       <ThemeContext.Consumer>
@@ -103,8 +102,8 @@ class Login extends Component {
           } = this.state
 
           return (
-            <LoginContainer isDarkTheme={isDarkTheme}>
-              <LoginFormOuterContainer isDarkTheme={isDarkTheme}>
+            <LoginContainer $isDarkTheme={isDarkTheme}>
+              <LoginFormOuterContainer $isDarkTheme={isDarkTheme}>
                 <NxtWatchLogo
                   src={
                     isDarkTheme
@@ -112,14 +111,14 @@ class Login extends Component {
                       : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
                   }
                   alt="website logo"
-                  isDarkTheme={isDarkTheme}
+                  $isDarkTheme={isDarkTheme}
                 />
                 <LoginFormInnerContainer as="form" onSubmit={this.onSubmit}>
                   <TextInputContainer>
                     <Label
                       as="label"
                       htmlFor="username"
-                      isDarkTheme={isDarkTheme}
+                      $isDarkTheme={isDarkTheme}
                     >
                       USERNAME
                     </Label>
@@ -130,7 +129,7 @@ class Login extends Component {
                         placeholder="Username"
                         value={username}
                         onChange={this.onChangeUsername}
-                        isDarkTheme={isDarkTheme}
+                        $isDarkTheme={isDarkTheme}
                       />
                     </InputBox>
                   </TextInputContainer>
@@ -138,7 +137,7 @@ class Login extends Component {
                     <Label
                       as="label"
                       htmlFor="password"
-                      isDarkTheme={isDarkTheme}
+                      $isDarkTheme={isDarkTheme}
                     >
                       PASSWORD
                     </Label>
@@ -149,7 +148,7 @@ class Login extends Component {
                         placeholder="Password"
                         value={password}
                         onChange={this.onChangePassword}
-                        isDarkTheme={isDarkTheme}
+                        $isDarkTheme={isDarkTheme}
                       />
                     </InputBox>
                   </TextInputContainer>
@@ -162,7 +161,7 @@ class Login extends Component {
                     <CheckboxLabel
                       as="label"
                       htmlFor="showPassword"
-                      isDarkTheme={isDarkTheme}
+                      $isDarkTheme={isDarkTheme}
                     >
                       Show Password
                     </CheckboxLabel>

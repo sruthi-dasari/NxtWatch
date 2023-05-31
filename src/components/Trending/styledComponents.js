@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import {ImFire} from 'react-icons/im'
 
-export const TrendingContainer = styled.div``
+export const TrendingContainer = styled.div`
+  width: 100vw;
+`
 
 export const TrendingBar = styled.div`
   display: flex;
   padding: 20px;
-  background-color: #ebebeb;
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#ebebeb')};
 `
 
 export const TrendingIconContainer = styled.div`
@@ -16,7 +18,7 @@ export const TrendingIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d7dfe9;
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '#d7dfe9')};
   margin-right: 15px;
 `
 
@@ -29,6 +31,7 @@ export const TrendingIcon = styled(ImFire)`
 export const TrendingHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 26px;
+  color: ${props => (props.$isDarkTheme ? '#f9f9f9' : '')};
 `
 
 export const LoaderContainer = styled.div``
@@ -38,8 +41,9 @@ export const TrendingFailureViewContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 100vh;
   padding: 20px;
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
 `
 export const TrendingFailureViewImage = styled.img`
   height: 200px;
@@ -55,7 +59,7 @@ export const TrendingFailureViewHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 24px;
   font-weight: 500;
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#181818')};
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     font-size: 30px;
@@ -82,9 +86,21 @@ export const TrendingFailureViewBtn = styled.button`
 `
 
 export const TrendingVideoItemsContainer = styled.div`
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
+  padding-top: 30px;
   @media screen and (min-width: 576px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
+  }
+`
+export const PanelAndMainContainer = styled.div`
+  display: flex;
+`
+export const LeftPanelViewInLargeScreen = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `

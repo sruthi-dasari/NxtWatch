@@ -21,7 +21,7 @@ import {
   SearchBarContainer,
   SearchBarInputContainer,
   SearchBarInput,
-  SearchIconContainer,
+  SearchIconContainerButton,
   SearchIcon,
   CloseIcon,
   LoaderContainer,
@@ -56,6 +56,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    // console.log('In componentDidMount()')
     this.getVideos()
   }
 
@@ -109,7 +110,19 @@ class Home extends Component {
   }
 
   onChangeSearchInput = event => {
-    this.setState({searchInput: event.target.value}, this.getVideos)
+    this.setState({searchInput: event.target.value})
+  }
+
+  onClickCloseBanner = () => {
+    this.setState(prevState => ({showBanner: !prevState.showBanner}))
+  }
+
+  onClickSearchButton = () => {
+    this.getVideos()
+  }
+
+  onClickRetry = () => {
+    this.getVideos()
   }
 
   renderSuccessView = () => {
@@ -185,9 +198,12 @@ class Home extends Component {
               No Search results found
             </NoResultsAndFailureViewHeading>
             <NoResultsAndFailureViewPara>
-              Try different keywords or remove search filter
+              Try different key words or remove search filter
             </NoResultsAndFailureViewPara>
-            <NoResultsAndFailureViewBtn type="button">
+            <NoResultsAndFailureViewBtn
+              type="button"
+              onClick={this.onClickRetry}
+            >
               Retry
             </NoResultsAndFailureViewBtn>
           </NoResultsAndFailureViewContainer>
@@ -215,17 +231,17 @@ class Home extends Component {
     }
   }
 
-  onClickCloseBanner = () => {
-    this.setState(prevState => ({showBanner: !prevState.showBanner}))
-  }
-
   render() {
     // console.log('In Home render()')
+
     return (
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
           const {searchInput, showBanner} = this.state
+
+          // this.modifyActiveOption()
+
           return (
             <>
               <NavBar />
@@ -235,9 +251,14 @@ class Home extends Component {
                 </LeftPanelViewInLargeScreen>
                 <HomeContainer>
                   {showBanner ? (
-                    <PremiumBanner>
+                    <PremiumBanner data-testid="banner">
                       <LogoAndCloseContainer>
-                        <AppLogoInBanner src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                        <AppLogoInBanner
+                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                          alt="nxt
+                          watch
+                          logo"
+                        />
                         <CloseButton
                           data-testid="close"
                           onClick={this.onClickCloseBanner}
@@ -254,20 +275,25 @@ class Home extends Component {
                     ''
                   )}
 
-                  <SearchBarAndVideosContainer isDarkTheme={isDarkTheme}>
+                  <SearchBarAndVideosContainer $isDarkTheme={isDarkTheme}>
                     <SearchBarContainer>
-                      <SearchBarInputContainer isDarkTheme={isDarkTheme}>
+                      <SearchBarInputContainer $isDarkTheme={isDarkTheme}>
                         <SearchBarInput
-                          isDarkTheme={isDarkTheme}
+                          $isDarkTheme={isDarkTheme}
                           type="search"
                           placeholder="Search"
                           value={searchInput}
                           onChange={this.onChangeSearchInput}
                         />
                       </SearchBarInputContainer>
-                      <SearchIconContainer isDarkTheme={isDarkTheme}>
-                        <SearchIcon isDarkTheme={isDarkTheme} />
-                      </SearchIconContainer>
+                      <SearchIconContainerButton
+                        $isDarkTheme={isDarkTheme}
+                        data-testid="searchButton"
+                        type="button"
+                        onClick={this.onClickSearchButton}
+                      >
+                        <SearchIcon $isDarkTheme={isDarkTheme} />
+                      </SearchIconContainerButton>
                     </SearchBarContainer>
                     {this.renderViewContainer()}
                   </SearchBarAndVideosContainer>

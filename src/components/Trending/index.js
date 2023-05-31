@@ -17,11 +17,15 @@ import {
   TrendingFailureViewPara,
   TrendingFailureViewBtn,
   TrendingVideoItemsContainer,
+  PanelAndMainContainer,
+  LeftPanelViewInLargeScreen,
 } from './styledComponents'
 
 import NavBar from '../NavBar'
 import VideoThumbnail from '../VideoThumbnail'
 import ThemeContext from '../context/ThemeContext'
+
+import LeftPanelView from '../LeftPanelView'
 
 const trendingApiStatusConstants = {
   success: 'SUCCESS',
@@ -84,15 +88,33 @@ class Trending extends Component {
   renderTrendingSuccessView = () => {
     // console.log('In renderTrendingSuccessView()')
     const {trendingData} = this.state
-
-    // console.log(trendingData)
     return (
-      <TrendingVideoItemsContainer>
-        {trendingData.map(eachItem => (
-          <VideoThumbnail videoDetails={eachItem} key={eachItem.id} />
-        ))}
-      </TrendingVideoItemsContainer>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+
+          return (
+            <>
+              <TrendingBar $isDarkTheme={isDarkTheme}>
+                <TrendingIconContainer $isDarkTheme={isDarkTheme}>
+                  <TrendingIcon />
+                </TrendingIconContainer>
+
+                <TrendingHeading $isDarkTheme={isDarkTheme}>
+                  Trending
+                </TrendingHeading>
+              </TrendingBar>
+              <TrendingVideoItemsContainer $isDarkTheme={isDarkTheme}>
+                {trendingData.map(eachItem => (
+                  <VideoThumbnail videoDetails={eachItem} key={eachItem.id} />
+                ))}
+              </TrendingVideoItemsContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
+    // console.log(trendingData)
   }
 
   renderTrendingLoadingView = () => (
@@ -109,7 +131,7 @@ class Trending extends Component {
           const {isDarkTheme} = value
 
           return (
-            <TrendingFailureViewContainer>
+            <TrendingFailureViewContainer $isDarkTheme={isDarkTheme}>
               <TrendingFailureViewImage
                 src={
                   isDarkTheme
@@ -118,7 +140,7 @@ class Trending extends Component {
                 }
                 alt="failure view"
               />
-              <TrendingFailureViewHeading isDarkTheme={isDarkTheme}>
+              <TrendingFailureViewHeading $isDarkTheme={isDarkTheme}>
                 Oops! Something Went Wrong
               </TrendingFailureViewHeading>
               <TrendingFailureViewPara>
@@ -153,16 +175,14 @@ class Trending extends Component {
     return (
       <>
         <NavBar />
-        <TrendingContainer data-testid="trending">
-          <TrendingBar>
-            <TrendingIconContainer>
-              <TrendingIcon />
-            </TrendingIconContainer>
-
-            <TrendingHeading>Trending</TrendingHeading>
-          </TrendingBar>
-          {this.renderTrendingView()}
-        </TrendingContainer>
+        <PanelAndMainContainer>
+          <LeftPanelViewInLargeScreen>
+            <LeftPanelView />
+          </LeftPanelViewInLargeScreen>
+          <TrendingContainer data-testid="trending">
+            {this.renderTrendingView()}
+          </TrendingContainer>
+        </PanelAndMainContainer>
       </>
     )
   }

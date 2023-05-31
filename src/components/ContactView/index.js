@@ -14,13 +14,22 @@ const ContactView = () => (
       const {isDarkTheme} = value
       return (
         <ContactViewContainer>
-          <ContactHeading isDarkTheme={isDarkTheme}>CONTACT US</ContactHeading>
+          <ContactHeading $isDarkTheme={isDarkTheme}>CONTACT US</ContactHeading>
           <SocialMediaContainer>
-            <SocialMediaIcon src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png" />
-            <SocialMediaIcon src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png" />
-            <SocialMediaIcon src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png" />
+            <SocialMediaIcon
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+              alt="facebook logo"
+            />
+            <SocialMediaIcon
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+              alt="twitter logo"
+            />
+            <SocialMediaIcon
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+              alt="linked in logo"
+            />
           </SocialMediaContainer>
-          <ContactText isDarkTheme={isDarkTheme}>
+          <ContactText $isDarkTheme={isDarkTheme}>
             Enjoy! Now to see your channels and recommendations!
           </ContactText>
         </ContactViewContainer>

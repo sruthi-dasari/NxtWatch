@@ -1,5 +1,7 @@
 import {Component} from 'react'
 
+import {withRouter} from 'react-router-dom'
+
 import {
   MenuContainer,
   Option,
@@ -7,58 +9,81 @@ import {
   TrendingIcon,
   GamingIcon,
   SavedVideosIcon,
-  OptionText,
+  HomeOptionText,
+  TrendingOptionText,
+  GamingOptionText,
+  SavedVideosOptionText,
   LinkItem,
 } from './styledComponents'
 import ThemeContext from '../context/ThemeContext'
 
-const optionConstants = {
-  home: 'HOME',
-  trending: 'TRENDING',
-  gaming: 'GAMING',
-  savedVideos: 'SAVED_VIDEOS',
-}
-
 class MenuView extends Component {
-  state = {
-    activeOption: optionConstants.home,
-  }
-
   render() {
+    // console.log('In MenuView()')
     return (
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const {activeOption} = this.state
+
+          const {location} = this.props
+          const {pathname} = location
+          // console.log(pathname)
           return (
-            <MenuContainer isDarkTheme={isDarkTheme}>
-              <LinkItem to="/" isDarkTheme={isDarkTheme}>
+            <MenuContainer $isDarkTheme={isDarkTheme}>
+              <LinkItem to="/" $isDarkTheme={isDarkTheme}>
                 <Option type="button">
                   <HomeIcon
-                    isDarkTheme={isDarkTheme}
-                    isActive={activeOption === 'HOME'}
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/'}
                   />
-                  <OptionText isDarkTheme={isDarkTheme}>Home</OptionText>
+                  <HomeOptionText
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/'}
+                  >
+                    Home
+                  </HomeOptionText>
                 </Option>
               </LinkItem>
-              <LinkItem to="/trending" isDarkTheme={isDarkTheme}>
+              <LinkItem to="/trending" $isDarkTheme={isDarkTheme}>
                 <Option type="button">
-                  <TrendingIcon isDarkTheme={isDarkTheme} />
-                  <OptionText isDarkTheme={isDarkTheme}>Trending</OptionText>
+                  <TrendingIcon
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/trending'}
+                  />
+                  <TrendingOptionText
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/trending'}
+                  >
+                    Trending
+                  </TrendingOptionText>
                 </Option>
               </LinkItem>
-              <LinkItem to="/gaming" isDarkTheme={isDarkTheme}>
+              <LinkItem to="/gaming" $isDarkTheme={isDarkTheme}>
                 <Option type="button">
-                  <GamingIcon isDarkTheme={isDarkTheme} />
-                  <OptionText isDarkTheme={isDarkTheme}>Gaming</OptionText>
+                  <GamingIcon
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/gaming'}
+                  />
+                  <GamingOptionText
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/gaming'}
+                  >
+                    Gaming
+                  </GamingOptionText>
                 </Option>
               </LinkItem>
-              <LinkItem to="/saved-videos" isDarkTheme={isDarkTheme}>
+              <LinkItem to="/saved-videos" $isDarkTheme={isDarkTheme}>
                 <Option type="button">
-                  <SavedVideosIcon isDarkTheme={isDarkTheme} />
-                  <OptionText isDarkTheme={isDarkTheme}>
+                  <SavedVideosIcon
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/saved-videos'}
+                  />
+                  <SavedVideosOptionText
+                    $isDarkTheme={isDarkTheme}
+                    $isActive={pathname === '/saved-videos'}
+                  >
                     Saved videos
-                  </OptionText>
+                  </SavedVideosOptionText>
                 </Option>
               </LinkItem>
             </MenuContainer>
@@ -69,4 +94,4 @@ class MenuView extends Component {
   }
 }
 
-export default MenuView
+export default withRouter(MenuView)

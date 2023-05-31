@@ -8,6 +8,8 @@ export const HomeContainer = styled.div`
 
 export const PremiumBanner = styled.div`
   padding: 30px;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+
   @media screen and (min-width: 576px) {
     background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
     background-size: cover;
@@ -51,7 +53,7 @@ export const BannerBtn = styled.button`
 `
 
 export const SearchBarAndVideosContainer = styled.div`
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
   padding: 10px;
 `
 
@@ -71,7 +73,8 @@ export const SearchBarInputContainer = styled.div`
   width: 100%;
   padding: 10px;
   display: flex;
-  background-color: ${props => (props.isDarkTheme ? 'transparent' : '#ffffff')};
+  background-color: ${props =>
+    props.$isDarkTheme ? 'transparent' : '#ffffff'};
 `
 
 export const SearchBarInput = styled.input`
@@ -81,11 +84,11 @@ export const SearchBarInput = styled.input`
   height: 100%;
   font-size: 16px;
   outline: none;
-  color: ${props => (props.isDarkTheme ? '#f1f1f1' : '#000000')};
+  color: ${props => (props.$isDarkTheme ? '#f1f1f1' : '#000000')};
 `
 
-export const SearchIconContainer = styled.div`
-  background-color: ${props => (props.isDarkTheme ? '#424242' : '#f1f5f9')};
+export const SearchIconContainerButton = styled.button`
+  background-color: ${props => (props.$isDarkTheme ? '#424242' : '#f1f5f9')};
   width: 100px;
   height: 40px;
   border: 1px solid #909090;
@@ -97,16 +100,18 @@ export const SearchIconContainer = styled.div`
 export const SearchIcon = styled(AiOutlineSearch)`
   height: 20px;
   width: 20px;
-  color: ${props => (props.isDarkTheme ? '#909090' : '#606060')};
+  color: ${props => (props.$isDarkTheme ? '#909090' : '#606060')};
 `
 
 export const LoaderContainer = styled.div``
 
-export const VideoItemsContainer = styled.div`
+export const VideoItemsContainer = styled.ul`
+  padding-left: 0px;
   @media screen and (min-width: 576px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    list-style: none;
   }
 `
 
@@ -133,7 +138,7 @@ export const NoResultsAndFailureViewHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 24px;
   font-weight: 500;
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#181818')};
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     font-size: 30px;

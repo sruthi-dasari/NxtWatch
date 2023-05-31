@@ -1,8 +1,8 @@
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
-import Popup from 'reactjs-popup'
+// import Popup from 'reactjs-popup'
 
 import MenuView from '../MenuView'
 import './index.css'
@@ -11,17 +11,21 @@ import {
   NavBarContainer,
   AppLogo,
   OptionsContainer,
+  ThemeIconContainer,
   ThemeIconButton,
+  MenuIconContainer,
   MenuIconButton,
+  LogoutIconContainer,
   LogoutIconButton,
   MoonIcon,
   SunIcon,
   MenuIcon,
   LogoutIcon,
   CloseIcon,
-  //   PopupContainer,
+  PopupContainer,
   ModalContainer,
   PopupCloseButton,
+  LogoutContainer,
   LogoutButton,
   ProfileIcon,
 } from './styledComponents'
@@ -50,57 +54,65 @@ const NavBar = props => (
       }
 
       return (
-        <NavBarContainer isDarkTheme={isDarkTheme}>
-          <AppLogo
-            src={
-              isDarkTheme
-                ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
-                : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
-            }
-          />
+        <NavBarContainer $isDarkTheme={isDarkTheme}>
+          <Link to="/">
+            <AppLogo
+              src={
+                isDarkTheme
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+              }
+              alt="website logo"
+            />
+          </Link>
           <OptionsContainer>
-            <ThemeIconButton data-testid="theme" onClick={onClickThemeButton}>
-              {isDarkTheme ? <SunIcon /> : <MoonIcon />}
-            </ThemeIconButton>
-
-            <Popup
+            <ThemeIconContainer>
+              <ThemeIconButton data-testid="theme" onClick={onClickThemeButton}>
+                {isDarkTheme ? <SunIcon /> : <MoonIcon />}
+              </ThemeIconButton>
+            </ThemeIconContainer>
+            <PopupContainer
               modal
               trigger={
-                <MenuIconButton type="button">
-                  <MenuIcon isDarkTheme={isDarkTheme} />
-                </MenuIconButton>
+                <MenuIconContainer>
+                  <MenuIconButton type="button">
+                    <MenuIcon $isDarkTheme={isDarkTheme} />
+                  </MenuIconButton>
+                </MenuIconContainer>
               }
               overlayStyle={overlayStyles}
-              className="popup-content"
-              isDarkTheme={isDarkTheme}
+              $isDarkTheme={isDarkTheme}
             >
               {close => (
                 <>
-                  <PopupCloseButton
-                    type="button"
-                    // className="trigger-button"
-                    onClick={() => close()}
-                  >
-                    <CloseIcon />
-                  </PopupCloseButton>
-                  <ModalContainer isDarkTheme={isDarkTheme}>
+                  <ModalContainer $isDarkTheme={isDarkTheme}>
+                    <PopupCloseButton
+                      type="button"
+                      // className="trigger-button"
+                      onClick={() => close()}
+                    >
+                      <CloseIcon $isDarkTheme={isDarkTheme} />
+                    </PopupCloseButton>
                     <MenuView />
                   </ModalContainer>
                 </>
               )}
-            </Popup>
+            </PopupContainer>
 
-            <ProfileIcon src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
-            <LogoutIconButton type="button" onClick={onClickLogout}>
-              <LogoutIcon isDarkTheme={isDarkTheme} />
-            </LogoutIconButton>
-            <LogoutButton
-              type="button"
-              isDarkTheme={isDarkTheme}
-              onClick={onClickLogout}
-            >
-              Logout
-            </LogoutButton>
+            <ProfileIcon
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+              alt="profile"
+            />
+            <LogoutIconContainer>
+              <LogoutIconButton onClick={onClickLogout}>
+                <LogoutIcon $isDarkTheme={isDarkTheme} />
+              </LogoutIconButton>
+            </LogoutIconContainer>
+            <LogoutContainer>
+              <LogoutButton $isDarkTheme={isDarkTheme} onClick={onClickLogout}>
+                Logout
+              </LogoutButton>
+            </LogoutContainer>
           </OptionsContainer>
         </NavBarContainer>
       )

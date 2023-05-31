@@ -2,8 +2,10 @@ import {Component} from 'react'
 
 import {formatDistanceToNow} from 'date-fns'
 
+import {Link} from 'react-router-dom'
+
 import {
-  VideoItemDetailsContainer,
+  VideoThumbnailContainer,
   VideoThumbnailImage,
   VideoDetails,
   ProfileImage,
@@ -12,7 +14,9 @@ import {
   SubDetails,
   ChannelName,
   ViewAndPublishedTimeContainer,
+  ViewCountItem,
   ViewCount,
+  PublishedTimeItem,
   PublishedTime,
 } from './styledComponents'
 import ThemeContext from '../context/ThemeContext'
@@ -27,6 +31,7 @@ class VideoThumbnail extends Component {
           const {videoDetails} = this.props
           // console.log(videoDetails)
           const {
+            id,
             thumbnailUrl,
             channel,
             title,
@@ -37,22 +42,28 @@ class VideoThumbnail extends Component {
           const publishedTime = formatDistanceToNow(new Date(publishedAt))
 
           return (
-            <VideoItemDetailsContainer>
-              <VideoThumbnailImage src={thumbnailUrl} />
-              <VideoDetails>
-                <ProfileImage src={profileImageUrl} />
-                <TextDetails>
-                  <VideoTitle isDarkTheme={isDarkTheme}>{title}</VideoTitle>
-                  <SubDetails>
-                    <ChannelName>{name}</ChannelName>
-                    <ViewAndPublishedTimeContainer>
-                      <ViewCount>{viewCount} views</ViewCount>
-                      <PublishedTime>{publishedTime}</PublishedTime>
-                    </ViewAndPublishedTimeContainer>
-                  </SubDetails>
-                </TextDetails>
-              </VideoDetails>
-            </VideoItemDetailsContainer>
+            <Link to={`/videos/${id}`}>
+              <VideoThumbnailContainer>
+                <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+                <VideoDetails>
+                  <ProfileImage src={profileImageUrl} alt="channel logo" />
+                  <TextDetails>
+                    <VideoTitle $isDarkTheme={isDarkTheme}>{title}</VideoTitle>
+                    <SubDetails>
+                      <ChannelName>{name}</ChannelName>
+                      <ViewAndPublishedTimeContainer>
+                        <ViewCountItem>
+                          <ViewCount>{viewCount} views</ViewCount>
+                        </ViewCountItem>
+                        <PublishedTimeItem>
+                          <PublishedTime>{publishedTime}</PublishedTime>
+                        </PublishedTimeItem>
+                      </ViewAndPublishedTimeContainer>
+                    </SubDetails>
+                  </TextDetails>
+                </VideoDetails>
+              </VideoThumbnailContainer>
+            </Link>
           )
         }}
       </ThemeContext.Consumer>

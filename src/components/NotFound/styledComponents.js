@@ -5,8 +5,7 @@ export const NotFoundView = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: #f9f9f9;
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
   width: 100%;
   @media screen and (max-width: 767px) {
     height: 90vh;
@@ -26,7 +25,7 @@ export const NotFoundImage = styled.img`
 `
 
 export const NotFoundHeading = styled.h1`
-  color: #1e293b;
+  color: ${props => (props.$isDarkTheme ? '#f9f9f9' : '#1e293b')};
   font-weight: 700;
   font-size: 22px;
   font-family: 'Roboto';
@@ -39,7 +38,7 @@ export const NotFoundPara = styled.p`
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto';
-  color: #475569;
+  color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#475569')};
   width: 320px;
   @media screen and (min-width: 768px) {
     font-size: 20px;

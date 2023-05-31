@@ -5,8 +5,8 @@ export const ContactViewContainer = styled.div`
   flex-direction: column;
 `
 
-export const ContactHeading = styled.h1`
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
+export const ContactHeading = styled.p`
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#1e293b')};
   font-weight: 500;
   font-size: 22px;
   font-family: 'Roboto';
@@ -23,7 +23,7 @@ export const SocialMediaContainer = styled.div`
 export const ContactText = styled.p`
   font-size: 16px;
   font-family: 'Roboto';
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
+  color: ${props => (props.$isDarkTheme ? '#ffffff' : '#1e293b')};
   line-height: 1.5;
   @media screen and (min-width: 768px) {
     font-size: 20px;
