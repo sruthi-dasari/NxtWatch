@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
+import {Link} from 'react-router-dom'
+
+export const LinkItem = styled(Link)`
+  text-decoration: none;
+`
+
 export const GamingVideoItemDetailsContainer = styled.div`
   padding: 10px;
 

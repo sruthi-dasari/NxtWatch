@@ -3,6 +3,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 
 export const GamingContainer = styled.div`
   width: 100vw;
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 
 export const GamingBar = styled.div`

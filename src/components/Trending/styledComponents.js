@@ -3,6 +3,7 @@ import {ImFire} from 'react-icons/im'
 
 export const TrendingContainer = styled.div`
   width: 100vw;
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 
 export const TrendingBar = styled.div`
@@ -43,7 +44,7 @@ export const TrendingFailureViewContainer = styled.div`
   align-items: center;
   height: 100vh;
   padding: 20px;
-  background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '#f9f9f9')};
 `
 export const TrendingFailureViewImage = styled.img`
   height: 200px;

@@ -67,6 +67,7 @@ class Trending extends Component {
       })
 
       const updatedData = data.videos.map(eachItem => ({
+        id: eachItem.id,
         channel: updatedChannel(eachItem.channel),
         publishedAt: eachItem.published_at,
         thumbnailUrl: eachItem.thumbnail_url,
@@ -88,6 +89,7 @@ class Trending extends Component {
   renderTrendingSuccessView = () => {
     // console.log('In renderTrendingSuccessView()')
     const {trendingData} = this.state
+    // console.log(trendingData)
     return (
       <ThemeContext.Consumer>
         {value => {

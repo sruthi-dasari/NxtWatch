@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import {formatDistanceToNow} from 'date-fns'
 
-import {Link} from 'react-router-dom'
-
 import {
   VideoThumbnailContainer,
   VideoThumbnailImage,
@@ -18,11 +16,13 @@ import {
   ViewCount,
   PublishedTimeItem,
   PublishedTime,
+  LinkItem,
 } from './styledComponents'
 import ThemeContext from '../context/ThemeContext'
 
 class VideoThumbnail extends Component {
   render() {
+    console.log('In VideoThumbnail render()')
     return (
       <ThemeContext.Consumer>
         {value => {
@@ -42,7 +42,7 @@ class VideoThumbnail extends Component {
           const publishedTime = formatDistanceToNow(new Date(publishedAt))
 
           return (
-            <Link to={`/videos/${id}`}>
+            <LinkItem to={`/videos/${id}`}>
               <VideoThumbnailContainer>
                 <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
                 <VideoDetails>
@@ -63,7 +63,7 @@ class VideoThumbnail extends Component {
                   </TextDetails>
                 </VideoDetails>
               </VideoThumbnailContainer>
-            </Link>
+            </LinkItem>
           )
         }}
       </ThemeContext.Consumer>

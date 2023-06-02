@@ -62,12 +62,13 @@ class Gaming extends Component {
 
     if (response.ok) {
       const updatedData = data.videos.map(eachItem => ({
+        id: eachItem.id,
         thumbnailUrl: eachItem.thumbnail_url,
         title: eachItem.title,
         viewCount: eachItem.view_count,
       }))
 
-      console.log(updatedData)
+      //   console.log(updatedData)
 
       this.setState({
         gamingData: updatedData,
@@ -81,6 +82,7 @@ class Gaming extends Component {
   renderGamingSuccessView = () => {
     // console.log('In renderGamingSuccessView()')
     const {gamingData} = this.state
+    // console.log(gamingData)
     return (
       <ThemeContext.Consumer>
         {value => {
@@ -164,6 +166,7 @@ class Gaming extends Component {
   }
 
   render() {
+    // console.log('In Gaming render()')
     return (
       <>
         <NavBar />

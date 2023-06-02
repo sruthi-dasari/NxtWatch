@@ -54,7 +54,7 @@ export const BannerBtn = styled.button`
 
 export const SearchBarAndVideosContainer = styled.div`
   background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
-  padding: 10px;
+  //   padding: 10px;
 `
 
 export const SearchBarContainer = styled.div`

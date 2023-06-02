@@ -1,4 +1,9 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
+
+export const LinkItem = styled(Link)`
+  text-decoration: none;
+`
 
 export const VideoThumbnailContainer = styled.li`
   //   padding: 10px;
@@ -19,6 +24,7 @@ export const VideoThumbnailImage = styled.img`
 export const VideoDetails = styled.div`
   display: flex;
   margin-top: 10px;
+  padding: 15px;
 
   @media screen and (min-width: 576px) {
     // margin: 0px;

@@ -7,6 +7,7 @@ import {
   VideoTitle,
   ViewCount,
   ViewersLocation,
+  LinkItem,
 } from './styledComponents'
 import ThemeContext from '../context/ThemeContext'
 
@@ -19,21 +20,23 @@ class GamingVideoThumbnail extends Component {
 
           const {videoDetails} = this.props
           // console.log(videoDetails)
-          const {thumbnailUrl, title, viewCount} = videoDetails
+          const {id, thumbnailUrl, title, viewCount} = videoDetails
 
           return (
-            <GamingVideoItemDetailsContainer>
-              <GamingVideoThumbnailImage src={thumbnailUrl} />
-              <VideoDetails>
-                <VideoTitle $isDarkTheme={isDarkTheme}>{title}</VideoTitle>
-                <ViewCount $isDarkTheme={isDarkTheme}>
-                  {viewCount} Watching
-                </ViewCount>
-                <ViewersLocation $isDarkTheme={isDarkTheme}>
-                  Worldwide
-                </ViewersLocation>
-              </VideoDetails>
-            </GamingVideoItemDetailsContainer>
+            <LinkItem to={`/videos/${id}`}>
+              <GamingVideoItemDetailsContainer>
+                <GamingVideoThumbnailImage src={thumbnailUrl} />
+                <VideoDetails>
+                  <VideoTitle $isDarkTheme={isDarkTheme}>{title}</VideoTitle>
+                  <ViewCount $isDarkTheme={isDarkTheme}>
+                    {viewCount} Watching
+                  </ViewCount>
+                  <ViewersLocation $isDarkTheme={isDarkTheme}>
+                    Worldwide
+                  </ViewersLocation>
+                </VideoDetails>
+              </GamingVideoItemDetailsContainer>
+            </LinkItem>
           )
         }}
       </ThemeContext.Consumer>

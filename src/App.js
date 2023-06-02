@@ -11,7 +11,7 @@ import NotFound from './components/NotFound'
 import ThemeContext from './components/context/ThemeContext'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
-// import SavedVideos from './components/SavedVideos'
+import SavedVideos from './components/SavedVideos'
 import VideoItemDetails from './components/VideoItemDetails'
 
 const optionConstants = {
@@ -24,7 +24,7 @@ const optionConstants = {
 class App extends Component {
   state = {
     isDarkTheme: false,
-    // activeOption: optionConstants.home,
+    savedVideosList: [],
   }
 
   toggleTheme = () => {
@@ -46,27 +46,25 @@ class App extends Component {
     }
   }
 
-  //   updateActiveOption = pathname => {
-  //     // console.log('In updateActiveOption()')
-  //     const activeOption = this.checkOption(pathname)
-  //     console.log(activeOption)
-  //     this.setState({activeOption})
-  //   }
+  addSavedVideo = videoData => {
+    console.log('In addSavedVideo()')
+    const {savedVideosList} = this.state
+    console.log(videoData)
+    const updatedSavedVideosList = [...savedVideosList, videoData]
+    this.setState({savedVideosList: updatedSavedVideosList})
+  }
 
   render() {
-    // console.log('In App.js render()')
-    const {
-      isDarkTheme,
-      // activeOption
-    } = this.state
-
+    console.log('In App.js render()')
+    const {isDarkTheme, savedVideosList} = this.state
+    console.log(savedVideosList)
     return (
       <ThemeContext.Provider
         value={{
           isDarkTheme,
           toggleTheme: this.toggleTheme,
-          //   updateActiveOption: this.updateActiveOption,
-          //   activeOption,
+          addSavedVideo: this.addSavedVideo,
+          savedVideosList,
         }}
       >
         <Switch>
@@ -74,7 +72,7 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
-          {/* <ProtectedRoute exact path="/saved-videos" component={SavedVideos} /> */}
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <ProtectedRoute
             exact
             path="/videos/:id"
