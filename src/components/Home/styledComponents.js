@@ -4,6 +4,7 @@ import {AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 
 export const HomeContainer = styled.div`
   width: 100%;
+  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 
 export const PremiumBanner = styled.div`
@@ -53,7 +54,6 @@ export const BannerBtn = styled.button`
 `
 
 export const SearchBarAndVideosContainer = styled.div`
-  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
   //   padding: 10px;
 `
 

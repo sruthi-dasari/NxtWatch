@@ -1,14 +1,50 @@
-.popup-overlay {
-  /* padding-top: 40px; */
+.popup-content {
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
 }
 
-.popup-content {
+.modal-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+  padding: 20px;
+}
+
+.menu-popup-content {
+  height: 100%;
+  width: 100%;
   background-color: #ffffff;
-  margin: 0px;
+}
+
+.menu-popup-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.logout-popup-content {
+  width: 450px;
+  height: 250px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.logout-popup-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

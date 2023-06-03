@@ -158,6 +158,7 @@ export const ModalContainer = styled.div`
 
 export const PopupCloseButton = styled.button`
   align-self: flex-end;
+  justify-self: flex-start;
   background-color: transparent;
   border: none;
   outline: none;
@@ -165,3 +166,15 @@ export const PopupCloseButton = styled.button`
   height: 30px;
   width: 30px;
 `
+
+export const PopupDialogueBox = styled.div``
+
+export const PopupTitle = styled.p``
+
+export const PopupButtonsContainer = styled.div`
+  display: flex;
+`
+
+export const PopupCancelButton = styled.button``
+
+export const PopupLogoutButton = styled.button``

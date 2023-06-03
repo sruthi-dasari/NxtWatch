@@ -2,7 +2,7 @@ import {withRouter, Link} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
-// import Popup from 'reactjs-popup'
+import Popup from 'reactjs-popup'
 
 import MenuView from '../MenuView'
 import './index.css'
@@ -28,6 +28,11 @@ import {
   LogoutContainer,
   LogoutButton,
   ProfileIcon,
+  PopupDialogueBox,
+  PopupTitle,
+  PopupButtonsContainer,
+  PopupCancelButton,
+  PopupLogoutButton,
 } from './styledComponents'
 import ThemeContext from '../context/ThemeContext'
 
@@ -71,7 +76,8 @@ const NavBar = props => (
                 {isDarkTheme ? <SunIcon /> : <MoonIcon />}
               </ThemeIconButton>
             </ThemeIconContainer>
-            <PopupContainer
+            {/*  PopupContainer */}
+            <Popup
               modal
               trigger={
                 <MenuIconContainer>
@@ -82,10 +88,14 @@ const NavBar = props => (
               }
               overlayStyle={overlayStyles}
               $isDarkTheme={isDarkTheme}
+              className="menu-popup-content"
+              //   className="popup-content"
             >
               {close => (
                 <>
-                  <ModalContainer $isDarkTheme={isDarkTheme}>
+                  {/* <ModalContainer $isDarkTheme={isDarkTheme}> */}
+                  <div className="menu-popup-modal-container">
+                    {/* <div className="modal-container"> */}
                     <PopupCloseButton
                       type="button"
                       // className="trigger-button"
@@ -94,19 +104,49 @@ const NavBar = props => (
                       <CloseIcon $isDarkTheme={isDarkTheme} />
                     </PopupCloseButton>
                     <MenuView />
-                  </ModalContainer>
+                    {/* </ModalContainer> */}
+                  </div>
                 </>
               )}
-            </PopupContainer>
-
+            </Popup>
             <ProfileIcon
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
               alt="profile"
             />
             <LogoutIconContainer>
-              <LogoutIconButton onClick={onClickLogout}>
-                <LogoutIcon $isDarkTheme={isDarkTheme} />
-              </LogoutIconButton>
+              <Popup
+                modal
+                trigger={
+                  <LogoutIconButton onClick={onClickLogout}>
+                    <LogoutIcon $isDarkTheme={isDarkTheme} />
+                  </LogoutIconButton>
+                }
+                className="logout-popup-content"
+              >
+                {close => (
+                  <>
+                    <div className="logout-popup-modal-container">
+                      <PopupTitle>Are you sure you want to logout?</PopupTitle>
+
+                      <PopupButtonsContainer>
+                        <PopupCancelButton
+                          type="button"
+                          className="trigger-button"
+                          onClick={() => close()}
+                        >
+                          Cancel
+                        </PopupCancelButton>
+                        <PopupLogoutButton
+                          type="button"
+                          className="trigger-button"
+                        >
+                          Logout
+                        </PopupLogoutButton>
+                      </PopupButtonsContainer>
+                    </div>
+                  </>
+                )}
+              </Popup>
             </LogoutIconContainer>
             <LogoutContainer>
               <LogoutButton $isDarkTheme={isDarkTheme} onClick={onClickLogout}>

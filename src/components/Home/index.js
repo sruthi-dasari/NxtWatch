@@ -249,7 +249,7 @@ class Home extends Component {
                 <LeftPanelViewInLargeScreen>
                   <LeftPanelView />
                 </LeftPanelViewInLargeScreen>
-                <HomeContainer>
+                <HomeContainer data-testid="home" $isDarkTheme={isDarkTheme}>
                   {showBanner ? (
                     <PremiumBanner data-testid="banner">
                       <LogoAndCloseContainer>
@@ -275,7 +275,7 @@ class Home extends Component {
                     ''
                   )}
 
-                  <SearchBarAndVideosContainer $isDarkTheme={isDarkTheme}>
+                  <SearchBarAndVideosContainer>
                     <SearchBarContainer>
                       <SearchBarInputContainer $isDarkTheme={isDarkTheme}>
                         <SearchBarInput
