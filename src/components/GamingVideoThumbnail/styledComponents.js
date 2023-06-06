@@ -34,7 +34,7 @@ export const VideoDetails = styled.div`
   }
 `
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   color: ${props => (props.$isDarkTheme ? '#ffffff' : '#0f0f0f')};
   font-family: 'Roboto';
   font-size: 18px;

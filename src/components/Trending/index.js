@@ -86,6 +86,10 @@ class Trending extends Component {
     }
   }
 
+  onClickRetry = () => {
+    this.getTrendingVideos()
+  }
+
   renderTrendingSuccessView = () => {
     // console.log('In renderTrendingSuccessView()')
     const {trendingData} = this.state
@@ -149,7 +153,7 @@ class Trending extends Component {
                 We are having some trouble to complete your request. Please try
                 again.
               </TrendingFailureViewPara>
-              <TrendingFailureViewBtn type="button">
+              <TrendingFailureViewBtn onClick={this.onClickRetry}>
                 Retry
               </TrendingFailureViewBtn>
             </TrendingFailureViewContainer>
@@ -175,17 +179,27 @@ class Trending extends Component {
 
   render() {
     return (
-      <>
-        <NavBar />
-        <PanelAndMainContainer>
-          <LeftPanelViewInLargeScreen>
-            <LeftPanelView />
-          </LeftPanelViewInLargeScreen>
-          <TrendingContainer data-testid="trending">
-            {this.renderTrendingView()}
-          </TrendingContainer>
-        </PanelAndMainContainer>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <>
+              <NavBar />
+              <PanelAndMainContainer>
+                <LeftPanelViewInLargeScreen>
+                  <LeftPanelView />
+                </LeftPanelViewInLargeScreen>
+                <TrendingContainer
+                  data-testid="trending"
+                  $isDarkTheme={isDarkTheme}
+                >
+                  {this.renderTrendingView()}
+                </TrendingContainer>
+              </PanelAndMainContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

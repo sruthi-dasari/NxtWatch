@@ -41,7 +41,7 @@ class SavedVideos extends Component {
                   Saved Videos
                 </SavedVideosHeading>
               </SavedVideosBar>
-              <SavedVideoItemsContainer>
+              <SavedVideoItemsContainer $isDarkTheme={isDarkTheme}>
                 {savedVideosList.map(eachItem => (
                   <VideoThumbnail videoDetails={eachItem} key={eachItem.id} />
                 ))}
@@ -56,7 +56,10 @@ class SavedVideos extends Component {
                 <LeftPanelViewInLargeScreen>
                   <LeftPanelView />
                 </LeftPanelViewInLargeScreen>
-                <SavedVideosContainer>
+                <SavedVideosContainer
+                  data-testid="savedVideos"
+                  $isDarkTheme={isDarkTheme}
+                >
                   {showNoVideosView ? <NoVideos /> : renderSavedVideosView()}
                 </SavedVideosContainer>
               </PanelAndMainContainer>

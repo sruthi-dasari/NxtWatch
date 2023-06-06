@@ -8,11 +8,10 @@ import ReactPlayer from 'react-player'
 
 export const VideoItemDetailsContainer = styled.div`
   width: 100vw;
-`
-
-export const SuccessViewContainer = styled.div`
   background-color: ${props => (props.$isDarkTheme ? '#0f0f0f' : '#f8fafc')};
 `
+
+export const SuccessViewContainer = styled.div``
 
 export const VideoPlayerContainer = styled.div`
   padding-top: 20px;
@@ -43,13 +42,13 @@ export const ViewsAndPublishedContainer = styled.ul`
   width: 200px;
 `
 
-export const ViewCount = styled.li`
+export const ViewCount = styled.p`
   list-style: none;
   color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#616e7c')};
   font-weight: 400;
 `
 
-export const PublishedTime = styled.li`
+export const PublishedTime = styled.p`
   color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#616e7c')};
   font-weight: 400;
 `
@@ -71,34 +70,34 @@ export const Button = styled.button`
 export const LikeIcon = styled(BiLike)`
   height: 27px;
   width: 27px;
-  color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#64748b')};
-  color: ${props => (props.$isLiked ? '#4f46e5' : '')};
+  color: ${props => (props.$isDarkTheme ? '#64748b' : '#64748b')};
+  color: ${props => (props.$isLiked ? '#2563eb' : '')};
   margin-right: 5px;
 `
 
 export const DislikeIcon = styled(BiDislike)`
   height: 27px;
   width: 27px;
-  color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#64748b')};
-  color: ${props => (props.$isDisliked ? '#4f46e5' : '')};
+  color: ${props => (props.$isDarkTheme ? '#64748b' : '#64748b')};
+  color: ${props => (props.$isDisliked ? '#2563eb' : '')};
   margin-right: 5px;
 `
 
 export const SaveIcon = styled(MdPlaylistAdd)`
   height: 27px;
   width: 27px;
-  color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#64748b')};
-  color: ${props => (props.$isSaved ? '#4f46e5' : '')};
+  color: ${props => (props.$isDarkTheme ? '#64748b' : '#64748b')};
+  color: ${props => (props.$isSaved ? '#2563eb' : '')};
   margin-right: 5px;
 `
 
 export const LikeDislikeSaveText = styled.p`
   font-size: 18px;
   font-weight: 600;
-  color: ${props => (props.$isDarkTheme ? '#94a3b8' : '#64748b')};
-  color: ${props => (props.$isLiked ? '#4f46e5' : '')};
-  color: ${props => (props.$isDisliked ? '#4f46e5' : '')};
-  color: ${props => (props.$isSaved ? '#4f46e5' : '')};
+  color: ${props => (props.$isDarkTheme ? '#64748b' : '#64748b')};
+  color: ${props => (props.$isLiked ? '#2563eb' : '')};
+  color: ${props => (props.$isDisliked ? '#2563eb' : '')};
+  color: ${props => (props.$isSaved ? '#2563eb' : '')};
   margin: 0px;
 `
 

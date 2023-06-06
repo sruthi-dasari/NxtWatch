@@ -46,25 +46,37 @@ class App extends Component {
     }
   }
 
-  addSavedVideo = videoData => {
-    console.log('In addSavedVideo()')
+  addVideo = videoData => {
+    console.log('In addVideo()')
     const {savedVideosList} = this.state
-    console.log(videoData)
+    // console.log(videoData)
     const updatedSavedVideosList = [...savedVideosList, videoData]
     this.setState({savedVideosList: updatedSavedVideosList})
+  }
+
+  removeVideo = videoData => {
+    console.log('In addVideo()')
+    const {savedVideosList} = this.state
+
+    const filteredVideos = savedVideosList.filter(
+      eachItem => eachItem.id !== videoData,
+    )
+    this.setState({savedVideosList: filteredVideos})
   }
 
   render() {
     console.log('In App.js render()')
     const {isDarkTheme, savedVideosList} = this.state
+    console.log('Saved videos list is:')
     console.log(savedVideosList)
     return (
       <ThemeContext.Provider
         value={{
           isDarkTheme,
-          toggleTheme: this.toggleTheme,
-          addSavedVideo: this.addSavedVideo,
           savedVideosList,
+          toggleTheme: this.toggleTheme,
+          addVideo: this.addVideo,
+          removeVideo: this.removeVideo,
         }}
       >
         <Switch>

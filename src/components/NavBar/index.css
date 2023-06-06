@@ -1,50 +1,19 @@
-.popup-content {
-  height: 100%;
-  width: 100%;
-  background-color: #ffffff;
-}
-
-.modal-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 20px;
-}
-
-.menu-popup-content {
-  height: 100%;
-  width: 100%;
-  background-color: #ffffff;
-}
-
-.menu-popup-modal-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 20px;
-}
-
 .popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.logout-popup-content {
-  width: 450px;
-  height: 250px;
-  background-color: #ffffff;
-  border-radius: 10px;
+.popup-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.logout-popup-modal-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+@media screen and (min-width: 768px) {
+  .popup-content {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

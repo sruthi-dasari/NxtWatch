@@ -13,6 +13,8 @@ export const LeftPanelViewInLargeScreen = styled.div`
 
 export const SavedVideosContainer = styled.div`
   width: 100vw;
+  height: 100vh;
+  background-color: ${props => (props.$isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const SavedVideosView = styled.div``
@@ -46,7 +48,6 @@ export const SavedVideosHeading = styled.h1`
   font-size: 26px;
   color: ${props => (props.$isDarkTheme ? '#f9f9f9' : '')};
 `
-export const SavedVideoItemsContainer = styled.div`
+export const SavedVideoItemsContainer = styled.ul`
   padding-top: 30px;
-  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
 `

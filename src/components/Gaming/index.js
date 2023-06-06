@@ -79,6 +79,10 @@ class Gaming extends Component {
     }
   }
 
+  onClickRetry = () => {
+    this.getGamingVideos()
+  }
+
   renderGamingSuccessView = () => {
     // console.log('In renderGamingSuccessView()')
     const {gamingData} = this.state
@@ -143,7 +147,9 @@ class Gaming extends Component {
                 We are having some trouble to complete your request. Please try
                 again.
               </GamingFailureViewPara>
-              <GamingFailureViewBtn type="button">Retry</GamingFailureViewBtn>
+              <GamingFailureViewBtn onClick={this.onClickRetry}>
+                Retry
+              </GamingFailureViewBtn>
             </GamingFailureViewContainer>
           )
         }}

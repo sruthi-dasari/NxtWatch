@@ -163,7 +163,10 @@ class Home extends Component {
               We are having some trouble to complete your request. Please try
               again.
             </NoResultsAndFailureViewPara>
-            <NoResultsAndFailureViewBtn type="button">
+            <NoResultsAndFailureViewBtn
+              type="button"
+              onClick={this.onClickRetry}
+            >
               Retry
             </NoResultsAndFailureViewBtn>
           </NoResultsAndFailureViewContainer>
@@ -200,10 +203,7 @@ class Home extends Component {
             <NoResultsAndFailureViewPara>
               Try different key words or remove search filter
             </NoResultsAndFailureViewPara>
-            <NoResultsAndFailureViewBtn
-              type="button"
-              onClick={this.onClickRetry}
-            >
+            <NoResultsAndFailureViewBtn onClick={this.onClickRetry}>
               Retry
             </NoResultsAndFailureViewBtn>
           </NoResultsAndFailureViewContainer>

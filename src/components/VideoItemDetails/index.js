@@ -59,6 +59,7 @@ class VideoItemDetails extends Component {
     isLiked: false,
     isDisliked: false,
     isSaved: false,
+    saveText: 'Save',
   }
 
   componentDidMount() {
@@ -117,16 +118,24 @@ class VideoItemDetails extends Component {
     }
   }
 
+  onClickRetry = () => {
+    this.getVideoDetails()
+  }
+
   renderSuccessView = () => (
     <ThemeContext.Consumer>
       {value => {
-        const {isDarkTheme, addSavedVideo} = value
-        // console.log('In renderSuccessView()')
+        const {isDarkTheme, addVideo, removeVideo, savedVideosList} = value
+        console.log('In renderSuccessView()')
 
-        const {videoItemData, isLiked, isDisliked, isSaved} = this.state
+        const {
+          videoItemData,
+          isLiked,
+          isDisliked,
+          isSaved,
+          saveText,
+        } = this.state
 
-        const saveText = isSaved ? 'Saved' : 'Save'
-        // console.log(videoItemData)
         const {
           title,
           viewCount,
@@ -139,14 +148,6 @@ class VideoItemDetails extends Component {
         const {name, profileImageUrl, subscriberCount} = channel
         const publishedTime = formatDistanceToNow(new Date(publishedAt))
 
-        const onClickSaveButton = () => {
-          console.log('In onClickSaveButton()')
-          this.setState(
-            prevState => ({isSaved: !prevState.isSaved}),
-            addSavedVideo({...videoItemData, isSaved}),
-          )
-        }
-
         const onClickLikeButton = () => {
           console.log('In onClickLikeButton()')
           this.setState(prevState => ({isLiked: !prevState.isLiked}))
@@ -155,6 +156,25 @@ class VideoItemDetails extends Component {
         const onClickDislikeButton = () => {
           console.log('In onClickDislikeButton()')
           this.setState(prevState => ({isDisliked: !prevState.isDisliked}))
+        }
+
+        const onClickSaveButton = () => {
+          console.log('In onClickSaveButton()')
+
+          addVideo({...videoItemData})
+        }
+
+        const isPresent = savedVideosList.find(
+          eachItem => eachItem.id === videoItemData.id,
+        )
+
+        if (isPresent) {
+          // removeVideo({...videoItemData})
+
+          this.setState(prevState => ({
+            saveText: isPresent !== undefined ? 'Saved' : 'Save',
+            isSaved: !prevState.isSaved,
+          }))
         }
 
         return (
@@ -208,7 +228,7 @@ class VideoItemDetails extends Component {
               </LikeDislikeSaveContainer>
               <HorizontalLine />
               <ChannelLogoAndSubscribersContainer>
-                <ChannelLogo src={profileImageUrl} />
+                <ChannelLogo src={profileImageUrl} alt="channel logo" />
                 <ChannelNameAndSubscribersCount>
                   <ChannelName $isDarkTheme={isDarkTheme}>{name}</ChannelName>
                   <SubscribersCount $isDarkTheme={isDarkTheme}>
@@ -247,7 +267,7 @@ class VideoItemDetails extends Component {
               We are having some trouble to complete your request. Please try
               again.
             </FailureViewPara>
-            <FailureViewBtn type="button">Retry</FailureViewBtn>
+            <FailureViewBtn onClick={this.onClickRetry}>Retry</FailureViewBtn>
           </FailureViewContainer>
         )
       }}
@@ -265,7 +285,7 @@ class VideoItemDetails extends Component {
   //   }
 
   renderViewContainer = () => {
-    // console.log('In renderViewContainer()')
+    console.log('In renderViewContainer()')
     const {videoItemApiStatus} = this.state
     switch (videoItemApiStatus) {
       case videoItemApiStatusConstants.success:
@@ -279,40 +299,42 @@ class VideoItemDetails extends Component {
     }
   }
 
-  //   saveTheVideo = () => (
-  //     <ThemeContext.Consumer>
-  //       {value => {
-  //         const {addSavedVideo} = value
-
-  //         console.log('In saveTheVideo()')
-
-  //         const {isSaved, videoItemData} = this.state
-  //         addSavedVideo({...videoItemData, isSaved})
-  //       }}
-  //     </ThemeContext.Consumer>
-  //   )
-
   render() {
     console.log('In VideoItemDetails render()')
-    const {isSaved} = this.state
-    console.log(isSaved)
-
-    // if (isSaved === true) {
-    //   this.saveTheVideo()
-    // }
 
     return (
-      <>
-        <NavBar />
-        <PanelAndMainContainer>
-          <LeftPanelViewInLargeScreen>
-            <LeftPanelView />
-          </LeftPanelViewInLargeScreen>
-          <VideoItemDetailsContainer>
-            {this.renderViewContainer()}
-          </VideoItemDetailsContainer>
-        </PanelAndMainContainer>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+
+          /* const {isSaved} = this.state
+          console.log(isSaved) */
+
+          const {saveText} = this.state
+          console.log(saveText)
+
+          // if (isSaved === true) {
+          //   this.saveTheVideo()
+          // }
+
+          return (
+            <>
+              <NavBar />
+              <PanelAndMainContainer>
+                <LeftPanelViewInLargeScreen>
+                  <LeftPanelView />
+                </LeftPanelViewInLargeScreen>
+                <VideoItemDetailsContainer
+                  data-testid="videoItemDetails"
+                  $isDarkTheme={isDarkTheme}
+                >
+                  {this.renderViewContainer()}
+                </VideoItemDetailsContainer>
+              </PanelAndMainContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

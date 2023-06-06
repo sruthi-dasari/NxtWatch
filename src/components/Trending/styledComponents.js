@@ -3,7 +3,7 @@ import {ImFire} from 'react-icons/im'
 
 export const TrendingContainer = styled.div`
   width: 100vw;
-  background-color: ${props => (props.$isDarkTheme ? '#181818' : '#f9f9f9')};
+  background-color: ${props => (props.$isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const TrendingBar = styled.div`

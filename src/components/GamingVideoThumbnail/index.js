@@ -25,7 +25,10 @@ class GamingVideoThumbnail extends Component {
           return (
             <LinkItem to={`/videos/${id}`}>
               <GamingVideoItemDetailsContainer>
-                <GamingVideoThumbnailImage src={thumbnailUrl} />
+                <GamingVideoThumbnailImage
+                  src={thumbnailUrl}
+                  alt="video thumbnail"
+                />
                 <VideoDetails>
                   <VideoTitle $isDarkTheme={isDarkTheme}>{title}</VideoTitle>
                   <ViewCount $isDarkTheme={isDarkTheme}>

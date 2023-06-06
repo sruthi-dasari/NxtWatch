@@ -137,13 +137,9 @@ export const CloseIcon = styled(AiOutlineClose)`
   color: ${props => (props.$isDarkTheme ? '#f1f1f1' : '')};
 `
 
-export const PopupContainer = styled(Popup)`
-  background-color: ${props => (props.$isDarkTheme ? '#212121' : '#ffffff')};
-  height: 100%;
-  width: 100%;
-`
+export const MenuPopupContainer = styled(Popup)``
 
-export const ModalContainer = styled.div`
+export const MenuModalContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -151,12 +147,11 @@ export const ModalContainer = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-  //   max-width: 458px;
   background-color: ${props => (props.$isDarkTheme ? '#212121' : '#ffffff')};
   padding: 20px;
 `
 
-export const PopupCloseButton = styled.button`
+export const MenuPopupCloseButton = styled.button`
   align-self: flex-end;
   justify-self: flex-start;
   background-color: transparent;
@@ -167,14 +162,57 @@ export const PopupCloseButton = styled.button`
   width: 30px;
 `
 
-export const PopupDialogueBox = styled.div``
+export const LogoutPopupContainer = styled(Popup)``
 
-export const PopupTitle = styled.p``
-
-export const PopupButtonsContainer = styled.div`
+export const LogoutModalContainer = styled.div`
+  flex-grow: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 450px;
+  background-color: ${props => (props.$isDarkTheme ? '#212121' : '#ffffff')};
+  padding: 20px;
+  border-radius: 10px;
+  margin: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 650px;
+  }
 `
 
-export const PopupCancelButton = styled.button``
+export const LogoutPopupTitle = styled.p`
+  font-size: 24px;
+  font-family: 'Roboto';
+  font-weight: ${props => (props.$isDarkTheme ? 300 : 500)};
+  color: ${props => (props.$isDarkTheme ? '#f1f5f9' : '#00306e')};
+  margin-bottom: 50px;
+`
 
-export const PopupLogoutButton = styled.button``
+export const LogoutPopupButtonsContainer = styled.div`
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+`
+
+export const LogoutAndCancelButton = styled.button`
+  font-size: 23px;
+  height: 60px;
+  width: 120px;
+  border-radius: 5px;
+  font-weight: 600;
+`
+
+export const LogoutPopupCancelButton = styled(LogoutAndCancelButton)`
+  background: transparent;
+  border: ${props =>
+    props.$isDarkTheme ? '1px solid #f1f5f9' : '1px solid #00306e'};
+  color: ${props => (props.$isDarkTheme ? '#64748b' : '#94a3b8')};
+`
+
+export const LogoutPopupConfirmButton = styled(LogoutAndCancelButton)`
+  background-color: #3b82f6;
+  border: none;
+  color: #ffffff;
+`
