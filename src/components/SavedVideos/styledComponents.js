@@ -49,5 +49,13 @@ export const SavedVideosHeading = styled.h1`
   color: ${props => (props.$isDarkTheme ? '#f9f9f9' : '')};
 `
 export const SavedVideoItemsContainer = styled.ul`
+  background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
   padding-top: 30px;
+  padding-left: 0px;
+  @media screen and (min-width: 576px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: ${props => (props.$isDarkTheme ? '#000000' : '')};
+  }
 `

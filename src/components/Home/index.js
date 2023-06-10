@@ -232,7 +232,7 @@ class Home extends Component {
   }
 
   render() {
-    // console.log('In Home render()')
+    console.log('In Home render()')
 
     return (
       <ThemeContext.Consumer>

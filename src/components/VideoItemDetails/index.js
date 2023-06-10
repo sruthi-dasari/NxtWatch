@@ -150,26 +150,55 @@ class VideoItemDetails extends Component {
 
         const onClickLikeButton = () => {
           console.log('In onClickLikeButton()')
+          if (isDisliked === true) {
+            this.setState(prevState => ({isDisliked: !prevState.isDisliked}))
+          }
           this.setState(prevState => ({isLiked: !prevState.isLiked}))
         }
 
         const onClickDislikeButton = () => {
           console.log('In onClickDislikeButton()')
+          if (isLiked === true) {
+            this.setState(prevState => ({isLiked: !prevState.isLiked}))
+          }
           this.setState(prevState => ({isDisliked: !prevState.isDisliked}))
         }
 
         const onClickSaveButton = () => {
           console.log('In onClickSaveButton()')
 
-          addVideo({...videoItemData})
+          const alreadyPresent = savedVideosList.find(
+            eachItem => eachItem.id === videoItemData.id,
+          )
+
+          if (alreadyPresent) {
+            console.log('video is already present')
+            removeVideo({...videoItemData})
+          } else {
+            console.log('video is not present')
+            addVideo({...videoItemData})
+          }
         }
 
         const isPresent = savedVideosList.find(
           eachItem => eachItem.id === videoItemData.id,
         )
+        console.log('isPresent: ')
+        console.log(isPresent)
 
-        if (isPresent) {
+        console.log('isSaved: ')
+        console.log(isSaved)
+
+        if (isPresent && !isSaved) {
+          console.log('In if condition')
           // removeVideo({...videoItemData})
+
+          this.setState(prevState => ({
+            saveText: isPresent !== undefined ? 'Saved' : 'Save',
+            isSaved: !prevState.isSaved,
+          }))
+        } else if (isPresent === undefined && isSaved === true) {
+          console.log('In else if condition')
 
           this.setState(prevState => ({
             saveText: isPresent !== undefined ? 'Saved' : 'Save',
@@ -275,14 +304,10 @@ class VideoItemDetails extends Component {
   )
 
   renderLoadingView = () => (
-    // {
-    // console.log('In renderLoadingView()')
-    // return
     <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height={50} width={50} />
     </LoaderContainer>
   )
-  //   }
 
   renderViewContainer = () => {
     console.log('In renderViewContainer()')
@@ -310,8 +335,11 @@ class VideoItemDetails extends Component {
           /* const {isSaved} = this.state
           console.log(isSaved) */
 
-          const {saveText} = this.state
+          const {saveText, isSaved} = this.state
+          console.log('saveText:')
           console.log(saveText)
+          console.log('isSaved:')
+          console.log(isSaved)
 
           // if (isSaved === true) {
           //   this.saveTheVideo()

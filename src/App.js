@@ -55,11 +55,11 @@ class App extends Component {
   }
 
   removeVideo = videoData => {
-    console.log('In addVideo()')
+    console.log('In removeVideo()')
     const {savedVideosList} = this.state
 
     const filteredVideos = savedVideosList.filter(
-      eachItem => eachItem.id !== videoData,
+      eachItem => eachItem.id !== videoData.id,
     )
     this.setState({savedVideosList: filteredVideos})
   }
