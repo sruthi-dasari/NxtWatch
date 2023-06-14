@@ -101,7 +101,7 @@ class Home extends Component {
           videosData: updatedData,
           apiStatus: apiStatusConstants.success,
         })
-      } else if (data.total === 0) {
+      } else {
         this.setState({apiStatus: apiStatusConstants.noResults})
       }
     } else {
